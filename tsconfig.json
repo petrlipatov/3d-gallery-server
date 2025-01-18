@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
     "rootDir": "./src",
+    "outDir": "./dist", // Указываем папку для компиляции
+
     /* Visit https://aka.ms/tsconfig to read more about this file */
 
     /* Projects */
