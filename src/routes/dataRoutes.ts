@@ -1,5 +1,5 @@
 export const express = require("express");
-const { IMAGES } = require("../../public");
+const { IMAGES } = require("../../public/data");
 
 const router = express.Router();
 
