@@ -1,4 +1,4 @@
-const large = [
+const IMAGES = [
   {
     small: "/small/0.jpeg",
     medium: "/medium/0.jpeg",
@@ -1043,6 +1043,6 @@ const TEXTS = [
 ];
 
 module.exports = {
-  large,
+  IMAGES,
   TEXTS,
 };
