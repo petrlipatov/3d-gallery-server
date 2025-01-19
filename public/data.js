@@ -1,4 +1,4 @@
-export const IMAGES = [
+const IMAGES = [
   {
     lowresMobile: "/previews-mobile/0.jpeg",
     lowresDesktop: "/previews-desktop/0.jpeg",
@@ -903,7 +903,7 @@ export const IMAGES = [
   },
 ];
 
-export const TEXTS = [
+const TEXTS = [
   "leatherback turtle",
   "winter jacket in the underground",
   "patterns on public transport seats",
@@ -1041,3 +1041,8 @@ export const TEXTS = [
   "dangling my feet",
   "tempest",
 ];
+
+module.exports = {
+  IMAGES,
+  TEXTS,
+};
