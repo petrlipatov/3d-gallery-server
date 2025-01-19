@@ -1,4 +1,5 @@
-const express = require("express");
+export const express = require("express");
+const path = require("path");
 const cors = require("cors");
 const uploadRoutes = require("./routes/uploadRoutes");
 const dataRoutes = require("./routes/dataRoutes");
