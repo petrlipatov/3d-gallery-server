@@ -1,9 +1,9 @@
-export const express = require("express");
-const { processImage } = require("../controllers/processImageController");
-const upload = require("../middlewares/multerConfig");
+import express from "express";
+import { processImage } from "../controllers/processImageController";
+import { upload } from "../middlewares/multerConfig";
 
 const router = express.Router();
 
 router.post("/upload", upload.single("file"), processImage);
 
-module.exports = router;
+export default router;

@@ -1,8 +1,8 @@
-export const express = require("express");
-const path = require("path");
-const cors = require("cors");
-const uploadRoutes = require("./routes/uploadRoutes");
-const dataRoutes = require("./routes/dataRoutes");
+import express from "express";
+import path from "path";
+import cors from "cors";
+import uploadRoutes from "./routes/uploadRoutes";
+import dataRoutes from "./routes/dataRoutes";
 
 const app = express();
 const port = 3300;

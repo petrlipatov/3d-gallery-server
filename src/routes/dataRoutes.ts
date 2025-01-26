@@ -1,5 +1,5 @@
-export const express = require("express");
-const { IMAGES } = require("../../public/data");
+import express from "express";
+import IMAGES from "../data/data.json";
 
 const router = express.Router();
 
@@ -7,4 +7,4 @@ router.get("/images", (req, res) => {
   res.json(IMAGES);
 });
 
-module.exports = router;
+export default router;

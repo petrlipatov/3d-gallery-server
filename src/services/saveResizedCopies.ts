@@ -1,5 +1,5 @@
-import sharp from "sharp";
 import fs from "fs";
+import sharp from "sharp";
 import path from "path";
 
 interface SizeConfig {
@@ -8,11 +8,11 @@ interface SizeConfig {
   quality: number;
 }
 
-const resizeImage = async (file: Express.Multer.File) => {
+export const saveResizedCopies = async (file: Express.Multer.File) => {
   const sizes: SizeConfig[] = [
-    { width: 300, folder: "previews-mobile", quality: 60 },
-    { width: 300, folder: "previews-desktop", quality: 100 },
-    { width: 1200, folder: "images", quality: 100 },
+    { width: 300, folder: "small", quality: 60 },
+    { width: 300, folder: "medium", quality: 100 },
+    { width: 1200, folder: "large", quality: 100 },
   ];
 
   const resizedFiles: { size: number; path: string }[] = [];
@@ -22,9 +22,8 @@ const resizeImage = async (file: Express.Multer.File) => {
       __dirname,
       "..",
       "..",
-      "..",
-      "client",
       "public",
+      "images",
       folder
     );
 
@@ -33,8 +32,6 @@ const resizeImage = async (file: Express.Multer.File) => {
     }
 
     const outputPath = path.join(outputDir, file.filename);
-
-    console.log(outputPath);
 
     await sharp(file.path)
       .resize({ width })
@@ -46,5 +43,3 @@ const resizeImage = async (file: Express.Multer.File) => {
 
   return resizedFiles;
 };
-
-export { resizeImage };
