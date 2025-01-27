@@ -3,10 +3,7 @@ import path from "path";
 import fs from "fs";
 import { readFileSync } from "fs";
 import { join } from "path";
-
-const IMAGES = JSON.parse(
-  readFileSync(join(__dirname, "..", "..", "public", "data.json"), "utf-8")
-);
+import { readImagesData } from "src/services/imagesData";
 
 const uploadDir = path.resolve(__dirname, "..", "..", "public", "uploads");
 
@@ -18,8 +15,10 @@ const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     cb(null, uploadDir);
   },
-  filename: (req, file, cb) => {
-    cb(null, `${IMAGES.length}.jpeg`);
+  filename: async (req, file, cb) => {
+    const images = await readImagesData();
+
+    cb(null, `${images.length}.jpeg`);
   },
 });
 
