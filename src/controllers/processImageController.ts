@@ -1,6 +1,12 @@
 import { saveResizedCopies } from "../services/saveResizedCopies";
-import { saveData } from "../services/saveImageData";
-import IMAGES from "../data/data.json";
+// import { saveData } from "../services/writeData";
+
+import { readFileSync } from "fs";
+import { join } from "path";
+
+const IMAGES = JSON.parse(
+  readFileSync(join(__dirname, "..", "..", "public", "data.json"), "utf-8")
+);
 
 export const processImage = async (req, res) => {
   if (!req.file) {
@@ -16,7 +22,7 @@ export const processImage = async (req, res) => {
       large: `/large/${IMAGES.length}.jpeg`,
     });
 
-    saveData();
+    // saveData();
 
     res.json({
       message: "File uploaded and resized successfully",

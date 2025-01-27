@@ -1,7 +1,12 @@
 import multer from "multer";
 import path from "path";
 import fs from "fs";
-import IMAGES from "../data/data.json";
+import { readFileSync } from "fs";
+import { join } from "path";
+
+const IMAGES = JSON.parse(
+  readFileSync(join(__dirname, "..", "..", "public", "data.json"), "utf-8")
+);
 
 const uploadDir = path.resolve(__dirname, "..", "..", "public", "uploads");
 

@@ -1,6 +1,7 @@
 import express from "express";
 import path from "path";
 import cors from "cors";
+import "module-alias/register";
 import uploadRoutes from "./routes/uploadRoutes";
 import dataRoutes from "./routes/dataRoutes";
 
@@ -14,8 +15,9 @@ const port = 3300;
 
 // app.use(cors(corsOptions));
 app.use(cors());
-app.use("/images", express.static(path.join(__dirname, "../public/images")));
 app.use(express.json());
+
+app.use("/images", express.static(path.join(__dirname, "../public/images")));
 app.use("/", dataRoutes);
 app.use("/", uploadRoutes);
 

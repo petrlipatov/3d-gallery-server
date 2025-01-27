@@ -1,10 +1,11 @@
 import express from "express";
-import IMAGES from "../data/data.json";
+import { readDataAsString } from "../services/imagesData";
 
 const router = express.Router();
 
-router.get("/images", (req, res) => {
-  res.json(IMAGES);
+router.get("/images", async (_, res) => {
+  const data = await readDataAsString();
+  res.type("application/json").send(data);
 });
 
 export default router;
