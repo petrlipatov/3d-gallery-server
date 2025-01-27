@@ -13,11 +13,13 @@ export const processImage = async (req, res) => {
   try {
     const resizedFiles = await saveResizedCopies(req.file);
     const imagesData = await readImagesData();
+    const id = imagesData[imagesData.length - 1].id + 1;
 
     imagesData.push({
-      small: `/small/${imagesData.length}.jpeg`,
-      medium: `/medium/${imagesData.length}.jpeg`,
-      large: `/large/${imagesData.length}.jpeg`,
+      small: `/small/${id}.jpeg`,
+      medium: `/medium/${id}.jpeg`,
+      large: `/large/${id}.jpeg`,
+      id: id,
     });
 
     saveImagesData(imagesData);

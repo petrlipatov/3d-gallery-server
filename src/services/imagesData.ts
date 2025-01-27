@@ -17,3 +17,10 @@ export const readImagesDataAsString = async () => {
   const data = await fs.readFile(DATA_PATH, "utf-8");
   return data;
 };
+
+export const removeImageData = async (id: string, resStatus) => {
+  const data = await readImagesData();
+  const filteredData = data.filter((el) => el.id !== Number(id));
+  await saveImagesData(filteredData);
+  resStatus.data = "filtered";
+};
