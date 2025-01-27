@@ -1,9 +1,7 @@
 import express from "express";
 import path from "path";
 import cors from "cors";
-import "module-alias/register";
-import uploadRoutes from "./routes/uploadRoutes";
-import dataRoutes from "./routes/dataRoutes";
+import imagesRoutes from "./routes/imagesRoutes";
 
 const app = express();
 const port = 3300;
@@ -17,9 +15,7 @@ const port = 3300;
 app.use(cors());
 app.use(express.json());
 
-app.use("/images", express.static(path.join(__dirname, "../public/images")));
-app.use("/", dataRoutes);
-app.use("/", uploadRoutes);
+app.use("/", imagesRoutes);
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);

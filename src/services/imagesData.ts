@@ -3,17 +3,17 @@ import { promises as fs } from "fs";
 
 const DATA_PATH = path.join(__dirname, "..", "..", "public", "data.json");
 
-export const saveData = async (data) => {
+export const saveImagesData = async (data) => {
   const dataContent = JSON.stringify(data, null, 2);
-  fs.writeFile(path.join(__dirname, "..", "data", "data.json"), dataContent);
+  fs.writeFile(DATA_PATH, dataContent);
 };
 
-export const readData = async () => {
+export const readImagesData = async () => {
   const data = await fs.readFile(DATA_PATH, "utf-8");
   return JSON.parse(data);
 };
 
-export const readDataAsString = async () => {
+export const readImagesDataAsString = async () => {
   const data = await fs.readFile(DATA_PATH, "utf-8");
   return data;
 };
