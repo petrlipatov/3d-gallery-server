@@ -7,6 +7,7 @@ const app = express();
 const port = 3300;
 
 var corsOptions = {
+  methods: ["GET", "POST", "PUT", "DELETE"],
   origin: "https://stepanplusdrawingultra.site",
   optionsSuccessStatus: 200,
 };
