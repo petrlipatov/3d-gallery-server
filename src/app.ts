@@ -2,6 +2,8 @@ import express from "express";
 import path from "path";
 import cors from "cors";
 import imagesRoutes from "./routes/imagesRoutes";
+import cookieParser from "cookie-parser";
+
 import { errorHandler } from "./middlewares/error-handler";
 
 const app = express();
@@ -21,6 +23,12 @@ app.use("/", imagesRoutes);
 
 app.use(errorHandler);
 
-app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+const start = async () => {
+  try {
+    app.listen(port, async () => console.log(`Server running on port ${port}`));
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+start();
