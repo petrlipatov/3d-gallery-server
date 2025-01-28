@@ -2,7 +2,9 @@
   "name": "server",
   "main": "src/app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rm -rf dist && npx tsc",
+    "start": "pm2 start dist/app.js"
   },
   "keywords": [],
   "author": "",
