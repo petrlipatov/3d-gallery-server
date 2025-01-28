@@ -17,7 +17,6 @@ router.use(
 
 router.get("/images", async (_, res, next) => {
   try {
-    throw new Error("test error message");
     const data = await readImagesDataAsString();
     res.type("application/json").send(data);
   } catch (err) {
