@@ -1,6 +1,6 @@
 import express from "express";
 import path from "path";
-import { processImage } from "../controllers/processImageController";
+import { processImage } from "../controllers/process-image-controller";
 import { upload } from "../middlewares/multerConfig";
 import {
   readImagesDataAsString,
