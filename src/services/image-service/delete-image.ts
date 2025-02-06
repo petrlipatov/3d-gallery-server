@@ -1,21 +1,20 @@
 import path from "path";
 import { promises as fs, constants } from "fs";
 
-const IMAGE_FOLDER_PATH = path.join(__dirname, "..", "..", "public", "images");
-const UPLOADS_FOLDER_PATH = path.join(
+const IMAGE_FOLDER_PATH = path.join(
   __dirname,
   "..",
   "..",
+  "..",
   "public",
-  "uploads"
+  "images"
 );
 
-export const deleteImageFiles = async (id: string, resStatus) => {
+export const deleteImage = async (id: string, resStatus) => {
   const imagePaths = [
     path.join(IMAGE_FOLDER_PATH, "small", `${id}.jpeg`),
     path.join(IMAGE_FOLDER_PATH, "medium", `${id}.jpeg`),
     path.join(IMAGE_FOLDER_PATH, "large", `${id}.jpeg`),
-    path.join(UPLOADS_FOLDER_PATH, `${id}.jpeg`),
   ];
 
   const deletePromises = imagePaths.map(async (imagePath) => {

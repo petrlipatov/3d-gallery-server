@@ -1,9 +1,9 @@
-import { saveResizedCopies } from "../services/saveResizedCopies";
-// import { saveData } from "../services/writeData";
-
-import { readFileSync } from "fs";
-import { join } from "path";
-import { readImagesData, saveImagesData } from "../services/imagesData";
+import { saveResizedCopies } from "../services/image-service/resize-image";
+import {
+  readImagesData,
+  saveImagesData,
+  clearUploads,
+} from "../services/image-service";
 
 export const processImage = async (req, res) => {
   if (!req.file) {
@@ -23,13 +23,14 @@ export const processImage = async (req, res) => {
     });
 
     saveImagesData(imagesData);
+    await clearUploads(id);
 
-    res.json({
+    return res.json({
       message: "File uploaded and resized successfully",
       originalFile: req.file.filename,
       resizedFiles,
     });
   } catch (error) {
-    res.status(500).json({ error: "Error processing file" });
+    return res.status(500).json({ error: "Error processing file" });
   }
 };

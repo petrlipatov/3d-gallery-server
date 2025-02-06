@@ -1,9 +1,7 @@
 import multer from "multer";
 import path from "path";
 import fs from "fs";
-import { readFileSync } from "fs";
-import { join } from "path";
-import { readImagesData } from "../services/imagesData";
+import { readImagesData } from "../services/image-service";
 
 const uploadDir = path.resolve(__dirname, "..", "..", "public", "uploads");
 

@@ -1,12 +1,12 @@
 import express from "express";
 import path from "path";
 import { processImage } from "../controllers/process-image-controller";
-import { upload } from "../middlewares/multerConfig";
+import { upload } from "../middlewares/image-middleware";
 import {
   readImagesDataAsString,
   removeImageData,
-} from "../services/imagesData";
-import { deleteImageFiles } from "../services/deleteImageFiles";
+} from "../services/image-service";
+import { deleteImage } from "../services/image-service/delete-image";
 
 const router = express.Router();
 
@@ -31,7 +31,7 @@ router.delete("/images/:id", async (req, res, next) => {
   const status = { id, data: null, removed: [] };
   try {
     await removeImageData(id, status);
-    await deleteImageFiles(id, status);
+    await deleteImage(id, status);
     res.status(200).json(status);
   } catch (err) {
     next(err);

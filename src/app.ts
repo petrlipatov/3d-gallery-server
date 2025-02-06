@@ -1,26 +1,26 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
-import imagesRoutes from "./routes/imagesRoutes";
-import authRoutes from "./routes/authRoutes";
+import imagesRoutes from "./routes/images-routes";
+import authRoutes from "./routes/auth-routes";
 import cookieParser from "cookie-parser";
-
-import { errorHandler } from "./middlewares/error-handler";
+import { errorHandler } from "./middlewares/error-handler-middleware";
 import mongoose from "mongoose";
 
 const app = express();
 const port = process.env.PORT || 3300;
 
-var corsOptions = {
-  origin: "https://stepanplusdrawingultra.site",
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  optionsSuccessStatus: 200,
-  allowedHeaders: ["Content-Type", "Authorization"],
-};
+// const corsOptions = {
+//   origin: "https://stepanplusdrawingultra.site",
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   optionsSuccessStatus: 200,
+//   allowedHeaders: ["Content-Type", "Authorization"],
+// };
 
 app.use(cookieParser());
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
 app.use(express.json());
+app.use(cors());
 
 app.use("/", authRoutes);
 app.use("/", imagesRoutes);

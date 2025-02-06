@@ -1,7 +1,7 @@
 import path from "path";
 import { promises as fs } from "fs";
 
-const DATA_PATH = path.join(__dirname, "..", "..", "public", "data.json");
+const DATA_PATH = path.join(__dirname, "..", "..", "..", "public", "data.json");
 
 export const saveImagesData = async (data) => {
   const dataContent = JSON.stringify(data, null, 2);

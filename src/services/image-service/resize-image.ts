@@ -22,6 +22,7 @@ export const saveResizedCopies = async (file: Express.Multer.File) => {
       __dirname,
       "..",
       "..",
+      "..",
       "public",
       "images",
       folder
