@@ -2,7 +2,7 @@ import { Request } from "express";
 import { tokenService } from "../services/token-service";
 import { UnauthorizedError } from "../errors";
 
-export function authMiddleware(req: Request, res, next) {
+export function authMiddleware(req: Request, _, next) {
   try {
     const authHeader = req.headers.authorization;
     if (!authHeader) return next(new UnauthorizedError());

@@ -7,6 +7,7 @@ import {
   removeImageData,
 } from "../services/image-service";
 import { deleteImage } from "../services/image-service/delete-image";
+import { authMiddleware } from "../middlewares/auth-middleware";
 
 const router = express.Router();
 
@@ -24,9 +25,9 @@ router.get("/images", async (_, res, next) => {
   }
 });
 
-router.post("/images", upload.single("file"), processImage);
+router.post("/images", authMiddleware, upload.single("file"), processImage);
 
-router.delete("/images/:id", async (req, res, next) => {
+router.delete("/images/:id", authMiddleware, async (req, res, next) => {
   const { id } = req.params;
   const status = { id, data: null, removed: [] };
   try {
