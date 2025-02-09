@@ -1,6 +1,6 @@
 import { Response, Request, NextFunction } from "express";
 import { getErrorMessage } from "../utils";
-import { CustomError } from "../errors/Custom-Base-Error";
+import { CustomError } from "../errors";
 
 export function errorHandler(
   err: unknown,

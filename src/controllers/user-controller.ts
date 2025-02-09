@@ -31,7 +31,6 @@ class Controller {
       });
       return res.json(userData);
     } catch (err) {
-      console.log(err);
       next(err);
     }
   }

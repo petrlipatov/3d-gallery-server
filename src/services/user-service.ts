@@ -4,6 +4,7 @@ import { v4 } from "uuid";
 import { mailService } from "./mail-service";
 import { tokenService } from "./token-service";
 import { UserDto } from "../dtos/user-dto";
+import { UnauthorizedError, BadRequestError } from "../errors";
 
 class Service {
   async register(email, password) {
@@ -48,13 +49,13 @@ class Service {
   async login(email, password) {
     const user = await UserModel.findOne({ email });
     if (!user) {
-      throw new Error("Ошибка авторизации");
+      throw new BadRequestError("Пользователя с таким имэилом не существует");
     }
 
     const isPassEquals = await bcrypt.compare(password, user.password);
 
     if (!isPassEquals) {
-      throw new Error("Неправильный пароль");
+      throw new BadRequestError("Неверный пароль");
     }
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({ ...userDto });
@@ -70,18 +71,20 @@ class Service {
 
   async refresh(refreshToken) {
     if (!refreshToken) {
-      throw new Error("Ошибка с токеном");
+      throw new UnauthorizedError();
     }
     const userData = await tokenService.validateRefreshToken(refreshToken);
     const tokenFromDB = await tokenService.findToken(refreshToken);
 
     if (!userData || !tokenFromDB) {
-      throw new Error("Unathtorized error");
+      throw new UnauthorizedError();
     }
 
     const user = await UserModel.findById(userData.id);
+
     const userDto = new UserDto(user);
-    const tokens = tokenService.generateTokens({ ...UserDto });
+
+    const tokens = tokenService.generateTokens({ ...userDto });
 
     await tokenService.saveToken(userDto.id, tokens.refreshToken);
     return { ...tokens, user: userDto };

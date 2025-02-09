@@ -17,10 +17,31 @@ const port = process.env.PORT || 3300;
 //   allowedHeaders: ["Content-Type", "Authorization"],
 // };
 
+const allowedOrigins = [
+  "https://stepanplusdrawingultra.site",
+  "http://localhost:5173",
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, origin);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, origin);
+      } else {
+        console.log(origin, "Not allowed by CORS");
+        return callback(new Error("Not allowed by CORS"));
+      }
+    },
+
+    credentials: true,
+  })
+);
+
 app.use(cookieParser());
-// app.use(cors(corsOptions));
+
 app.use(express.json());
-app.use(cors());
 
 app.use("/", authRoutes);
 app.use("/", imagesRoutes);
@@ -29,7 +50,6 @@ app.use(errorHandler);
 const start = async () => {
   try {
     await mongoose.connect(process.env.DB_URL);
-
     if (mongoose.connection.readyState === 1) {
       console.log("✅ MongoDB connection is open");
     }
