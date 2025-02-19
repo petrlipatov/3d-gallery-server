@@ -31,11 +31,13 @@ app.use(
         return callback(null, origin);
       } else {
         console.log(origin, "Not allowed by CORS");
-        return callback(new Error("Not allowed by CORS"));
+        return callback(new Error(`Not allowed by CORS ${origin}`));
       }
     },
 
     credentials: true,
+    methods: "GET, POST, OPTIONS, PUT, DELETE",
+    allowedHeaders: "Origin, Content-Type, Accept, Authorization",
   })
 );
 
