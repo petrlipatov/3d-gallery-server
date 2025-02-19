@@ -8,7 +8,7 @@ import { errorHandler } from "./middlewares/error-handler-middleware";
 import mongoose from "mongoose";
 
 const app = express();
-const port = process.env.PORT || 3300;
+const port = 3300;
 
 // const corsOptions = {
 //   origin: "https://stepanplusdrawingultra.site",
