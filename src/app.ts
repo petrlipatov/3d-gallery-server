@@ -10,17 +10,17 @@ import mongoose from "mongoose";
 const app = express();
 const port = 3300;
 
+const allowedOrigins = [
+  "https://stepanplusdrawingultra.site",
+  "http://localhost:5173",
+];
+
 // const corsOptions = {
 //   origin: "https://stepanplusdrawingultra.site",
 //   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 //   optionsSuccessStatus: 200,
 //   allowedHeaders: ["Content-Type", "Authorization"],
 // };
-
-const allowedOrigins = [
-  "https://stepanplusdrawingultra.site",
-  "http://localhost:5173",
-];
 
 app.use(
   cors({
