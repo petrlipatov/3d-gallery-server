@@ -3,13 +3,6 @@ import nodemailer from "nodemailer";
 class Service {
   transporter;
   constructor() {
-    // console.log("SMTP Config:", {
-    //   host: process.env.SMTP_HOST,
-    //   port: process.env.SMTP_PORT,
-    //   user: process.env.SMTP_USER,
-    //   pass: process.env.SMTP_PASSWORD,
-    // });
-
     this.transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port: process.env.SMTP_PORT,
@@ -47,4 +40,4 @@ class Service {
   }
 }
 
-export const mailService = new Service();
+// export const mailService = new Service();

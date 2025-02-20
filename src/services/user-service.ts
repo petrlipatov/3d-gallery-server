@@ -1,7 +1,7 @@
 import { UserModel } from "../models/user-model";
 import bcrypt from "bcrypt";
 import { v4 } from "uuid";
-import { mailService } from "./mail-service";
+// import { mailService } from "./mail-service";
 import { tokenService } from "./token-service";
 import { UserDto } from "../dtos/user-dto";
 import { UnauthorizedError, BadRequestError } from "../errors";
@@ -24,10 +24,10 @@ class Service {
       activationLink,
     });
 
-    await mailService.sendActivationMail(
-      email,
-      `${process.env.API_URL}/activate/${activationLink}`
-    );
+    // await mailService.sendActivationMail(
+    //   email,
+    //   `${process.env.API_URL}/activate/${activationLink}`
+    // );
     const userDto = new UserDto(user);
     const tokens = tokenService.generateTokens({ ...userDto });
 
