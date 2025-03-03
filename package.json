@@ -4,7 +4,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist && npx tsc",
-    "start": "pm2 start dist/app.js"
+    "start": "pm2 start dist/app.js",
+    "dev": "npx nodemon src/app.ts"
   },
   "keywords": [],
   "author": "",
