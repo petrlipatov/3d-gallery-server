@@ -15,7 +15,7 @@ const storage = multer.diskStorage({
   },
   filename: async (req, file, cb) => {
     const images = await readImagesData();
-    cb(null, `${images.length + 1}.jpeg`);
+    cb(null, `${images[images.length - 1].id + 1}.jpeg`);
   },
 });
 

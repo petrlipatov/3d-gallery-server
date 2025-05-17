@@ -30,7 +30,6 @@ export const processImage = async (req, res) => {
       originalFile: req.file.filename,
       resizedFiles,
     });
-    
   } catch (error) {
     return res.status(500).json({ error: "Error processing file" });
   }
