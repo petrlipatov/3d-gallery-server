@@ -11,7 +11,7 @@ const app = express();
 const port = 3300;
 
 const allowedOrigins = [
-  "https://stepanplusdrawingultra.site",
+  "https://stepanplusdrawingultra.com",
   "http://localhost:5173",
 ];
 
