@@ -1,0 +1,10 @@
+version: '3.8'
+services:
+  server:
+    command: npm run dev
+    volumes:
+      # Монтируем весь проект в папку /app внутри контейнера
+      - .:/app
+      # Этот трюк не дает локальной папке node_modules (если она есть)
+      # затереть node_modules, установленные внутри контейнера.
+      - /app/node_modules
