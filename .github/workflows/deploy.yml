@@ -40,15 +40,15 @@ jobs:
             # Navigate to the project directory on the server
             cd /home/petr/stepa/server
             
-            # Pull the latest version of the docker-compose.yml file
+            # Pull the latest version of the docker compose.yml file
             git pull origin main
             
             # Pull the new server image from Docker Hub
-            docker-compose pull server
+            docker compose pull server
             
             # Restart the services with the new image
             # The -d flag runs it in detached mode
-            docker-compose up -d --remove-orphans
+            docker compose up -d --remove-orphans
             
             # Clean up old, unused docker images to save space
             docker image prune -af
